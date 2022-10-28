@@ -5,10 +5,10 @@ const request = require("request-async")
 
 // Main
 async function check(ip){
-    var response = await request(`http://167.172.85.80/api/free/check/proxy?ip=${ip}`)
-    response = JSON.parse(response.body)
+    var response = await request(`https://hnisa.vercel.app/api/ip/info?ip=${ip}`)
+    response = JSON.parse(response.body).data
 
-    return response.proxy
+    return response.proxy === "yes" ? true : false
 }
 
 module.exports = {
